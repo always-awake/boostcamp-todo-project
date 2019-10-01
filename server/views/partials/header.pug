@@ -1,0 +1,11 @@
+header
+    div(class='header__title') Amazon Administration
+    div(class='header__content')
+        if userName
+            div(class='header__user__info') Welcome! #{userName}
+        else
+            div(class='header__user__info') Welcome!
+        if userName
+            div(class='header__menu')
+                div(class='menu__button password') Change Password
+                div(class='menu__button logout') logout

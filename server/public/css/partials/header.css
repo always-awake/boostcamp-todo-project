@@ -1,0 +1,48 @@
+header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: #232F3E;
+  color: white;
+  height: 5rem;
+  width: 100%;
+}
+
+.header__title {
+  margin-left: 5rem;
+  line-height: 5rem;
+  font-size: 2.5rem;
+  cursor: pointer;
+}
+
+.header__content {
+  display: flex;
+  flex-direction: row;
+}
+
+.header__user__info {
+  margin-right: 1rem;
+  line-height: 5rem;
+  font-size: 1.5rem;
+  font-weight: bolder;
+  color: #FFA624;
+}
+
+.header__menu {
+  display: flex;
+  flex-direction: row;
+  margin-left: 1rem;
+  margin-right: 5rem;
+  line-height: 5rem;
+  font-size: 1.5rem;
+}
+
+.menu__button.logout {
+  margin-left: 1rem;
+  cursor: pointer;
+}
+
+.menu__button.logout:hover {
+  text-decoration: underline;
+  color: #FFA624;
+}
