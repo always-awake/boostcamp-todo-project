@@ -12,6 +12,10 @@ const passportConfig = require('./lib/passport');
 const dotEnv = require('dotenv');
 dotEnv.config();
 
+// router import
+const adminRouter = require('./routes/adminRouter');
+const userRouter = require('./routes/userRouter');
+
 const app = express();
 
 // view engine setup
@@ -53,6 +57,9 @@ app.use(passport.initialize());
 app.use(passport.session());
 passportConfig(passport);
 
+// router setting
+app.use('/admin', adminRouter);
+app.use('/users', userRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
