@@ -1,0 +1,6 @@
+# IDE .gitignore
+.idea
+
+# server .gitignore list
+server/node_modules
+server/.env
