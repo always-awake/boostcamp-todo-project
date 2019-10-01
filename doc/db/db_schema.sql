@@ -9,7 +9,7 @@ USE todo ;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `todo`.`USERS` (
   pk BIGINT(21) NOT NULL AUTO_INCREMENT,
-  id VARCHAR(50) NOT NULL,
+  id VARCHAR(50) NOT NULL UNIQUE,
   password VARCHAR(50) NOT NULL,
   name VARCHAR(50) NOT NULL,
   is_superuser TINYINT NOT NULL DEFAULT 0,
@@ -38,7 +38,7 @@ CREATE TABLE IF NOT EXISTS `todo`.`LISTS` (
   pk BIGINT(21) NOT NULL AUTO_INCREMENT,
   creator BIGINT(21) NOT NULL,
   board BIGINT(21) NOT NULL,
-  title VARCHAR(100) NOT NULL,
+  title VARCHAR(100) NOT NULL UNIQUE,
   tasks_order VARCHAR(200) NOT NULL DEFAULT '',
   PRIMARY KEY (pk),
   FOREIGN KEY (board)
