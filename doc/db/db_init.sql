@@ -31,45 +31,46 @@ VALUES(
 -- -----------------------------------------------------
 -- Init `todo`.`TASK_LISTS`
 -- -----------------------------------------------------
-INSERT INTO TASK_LISTS(user_pk, project_pk, title)
+INSERT INTO TASK_LISTS(user_pk, project_pk, title, seq)
 VALUES(
     (SELECT pk FROM USERS WHERE pk = 1),
     (SELECT pk FROM PROJECTS WHERE pk = 1),
-    '할 일'
+    '할 일',
+    1
 );
-UPDATE PROJECTS SET task_lists_order = '1' WHERE pk = 1;
 
-INSERT INTO TASK_LISTS(user_pk, project_pk, title)
+INSERT INTO TASK_LISTS(user_pk, project_pk, title, seq)
 VALUES(
     (SELECT pk FROM USERS WHERE pk = 1),
     (SELECT pk FROM PROJECTS WHERE pk = 1),
-    '하는 중'
+    '하는 중',
+    2
 );
-UPDATE PROJECTS SET task_lists_order = '1,2' WHERE pk = 1;
 
-INSERT INTO TASK_LISTS(user_pk, project_pk, title)
+INSERT INTO TASK_LISTS(user_pk, project_pk, title, seq)
 VALUES(
     (SELECT pk FROM USERS WHERE pk = 1),
     (SELECT pk FROM PROJECTS WHERE pk = 1),
-    '다 함'
+    '다 함',
+    3
 );
-UPDATE PROJECTS SET task_lists_order = '1,2,3' WHERE pk = 1;
 
 -- -----------------------------------------------------
 -- Init `todo`.`TASKS`
 -- -----------------------------------------------------
-INSERT INTO TASKS(user_pk, task_list_pk, content)
+INSERT INTO TASKS(user_pk, task_list_pk, content, seq)
 VALUES(
     (SELECT pk FROM USERS WHERE pk = 1),
-    (SELECT pk FROM TASK_LISTS WHERE pk = 2),
-    '자바스크립트 공부하기'
+    (SELECT pk FROM TASK_LISTS WHERE pk = 1),
+    '자바스크립트 공부하기',
+    1
 );
-UPDATE TASK_LISTS SET tasks_order = '1' WHERE pk = 1;
 
-INSERT INTO TASKS(user_pk, task_list_pk, content)
+INSERT INTO TASKS(user_pk, task_list_pk, content, seq)
 VALUES(
     (SELECT pk FROM USERS WHERE pk = 1),
-    (SELECT pk FROM TASK_LISTS WHERE pk = 2),
-    '파이썬 공부하기'
+    (SELECT pk FROM TASK_LISTS WHERE pk = 1),
+    '파이썬 공부하기',
+    2
 );
-UPDATE TASK_LISTS SET tasks_order = '1,2' WHERE pk = 1;
+

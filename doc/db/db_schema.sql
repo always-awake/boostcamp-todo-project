@@ -2,7 +2,7 @@
 -- Schema todo
 -- -----------------------------------------------------
 CREATE SCHEMA IF NOT EXISTS todo DEFAULT CHARACTER SET utf8 ;
-USE todo ;
+USE todo;
 
 -- -----------------------------------------------------
 -- Table `todo`.`USERS`
@@ -24,7 +24,6 @@ CREATE TABLE IF NOT EXISTS `todo`.`PROJECTS` (
   pk BIGINT(21) NOT NULL AUTO_INCREMENT,
   user_pk BIGINT(21) NOT NULL,
   is_public TINYINT NULL DEFAULT '1',
-  task_lists_order VARCHAR(200) NOT NULL DEFAULT '',
   PRIMARY KEY (pk),
   FOREIGN KEY (user_pk)
   REFERENCES USERS(pk) ON UPDATE CASCADE ON DELETE CASCADE
@@ -38,7 +37,7 @@ CREATE TABLE IF NOT EXISTS `todo`.`TASK_LISTS` (
   user_pk BIGINT(21) NOT NULL,
   project_pk BIGINT(21) NOT NULL,
   title VARCHAR(100) NOT NULL UNIQUE,
-  tasks_order VARCHAR(200) NOT NULL DEFAULT '',
+  seq BIGINT(21) NOT NULL,
   PRIMARY KEY (pk),
   FOREIGN KEY (project_pk)
   REFERENCES PROJECTS(pk) ON UPDATE CASCADE ON DELETE CASCADE,
@@ -54,6 +53,7 @@ CREATE TABLE IF NOT EXISTS `todo`.`TASKS` (
   user_pk BIGINT(21) NOT NULL,
   task_list_pk BIGINT(21) NOT NULL,
   content VARCHAR(1500) NOT NULL,
+  seq BIGINT(21) NOT NULL,
   created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
   updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (pk),
