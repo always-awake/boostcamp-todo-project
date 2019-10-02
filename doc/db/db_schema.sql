@@ -12,6 +12,7 @@ CREATE TABLE IF NOT EXISTS `todo`.`USERS` (
   id VARCHAR(50) NOT NULL UNIQUE,
   password VARCHAR(50) NOT NULL,
   name VARCHAR(50) NOT NULL,
+  profile_img VARCHAR(200),
   is_superuser TINYINT NOT NULL DEFAULT 0,
   PRIMARY KEY (pk)
 );

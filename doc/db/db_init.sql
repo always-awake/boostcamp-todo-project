@@ -39,7 +39,7 @@ VALUES(
 );
 UPDATE PROJECTS SET task_lists_order = '1' WHERE pk = 1;
 
-INSERT INTO TASK_LISTS(creator, board, title)
+INSERT INTO TASK_LISTS(user_pk, project_pk, title)
 VALUES(
     (SELECT pk FROM USERS WHERE pk = 1),
     (SELECT pk FROM PROJECTS WHERE pk = 1),
@@ -47,7 +47,7 @@ VALUES(
 );
 UPDATE PROJECTS SET task_lists_order = '1,2' WHERE pk = 1;
 
-INSERT INTO TASK_LISTS(creator, board, title)
+INSERT INTO TASK_LISTS(user_pk, project_pk, title)
 VALUES(
     (SELECT pk FROM USERS WHERE pk = 1),
     (SELECT pk FROM PROJECTS WHERE pk = 1),
