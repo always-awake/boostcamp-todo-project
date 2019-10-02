@@ -5,6 +5,13 @@ const loginSerializer = (auth_user, msg) => {
   }
 };
 
+const logoutSerializer = (msg) => {
+  return {
+    msg: msg
+  }
+};
+
 module.exports = {
-  loginSerializer
+  loginSerializer,
+  logoutSerializer
 };
