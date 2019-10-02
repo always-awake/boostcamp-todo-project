@@ -1,4 +1,4 @@
-const projectSerializer = (project, user) => {
+const projectSerializer = (project) => {
   return {
     pk: project.pk,
     user_pk: project.user_pk,
