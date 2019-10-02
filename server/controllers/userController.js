@@ -1,6 +1,7 @@
 const passport = require('passport');
 const {
   loginSerializer,
+  logoutSerializer,
 } = require('../utils/serializers/userSerializers');
 
 const userLogin = (req, res, next) => {
@@ -17,7 +18,16 @@ const userLogin = (req, res, next) => {
       })(req, res, next);
 };
 
+const userLogout = (req, res) => {
+  req.logout();
+  req.session.save(() => {
+    res.status(200);
+    res.json(logoutSerializer('정상적으로 로그아웃됬습니다.'));
+  })
+};
+
 module.exports = {
   userLogin,
+  userLogout
 };
 
