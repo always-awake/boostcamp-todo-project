@@ -25,6 +25,6 @@
 
 ### task
 - [x] task 생성
-- [ ] task 수정
+- [x] task 수정
 - [ ] task 삭제
     - task list의 task_order 칼럼이 task의 pk 삭제

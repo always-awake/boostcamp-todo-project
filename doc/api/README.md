@@ -14,14 +14,35 @@ API Documentation
  > task 생성
  - Request `POST /tasks`
    * Body
-     + **taskListPk**: task list's pk (String)
-     + **content**: task content (String)
+     + **projectPk**: task list가 속해있는 project의 Pk
+     + **taskListPk**: task list의 pk
+     + **content**: task 내용 (String)
  
  - Response `HTTP 201 Created`
  ```js
 // success
 {
     "msg": "task가 성공적으로 생성되었습니다."
+}
+
+// fail 
+{
+    "msg": "일시적 오류입니다. 다시 시도해주세요."
+}
+ ```
+
+ ### modify task
+ > task 수정
+ - Request `POST /tasks/:taskPk`
+   * Body
+     + **projectPk**: task list가 속해있는 project의 Pk (유저의 권한을 파악하기 위함)
+     + **content**: task 수정할 내용 (String)
+ 
+ - Response `HTTP 200 Ok`
+ ```js
+// success
+{
+    "msg": "task가 성공적으로 수정되었습니다."
 }
 
 // fail 
