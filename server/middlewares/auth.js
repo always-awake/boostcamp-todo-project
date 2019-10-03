@@ -27,12 +27,12 @@ const isLogin = (req, res, next) => {
 const isOwner = async (req, res, next) => {
   const { user, body } = req;
   const { projectPk } = body;
-  const auth = await selectAuth(user.pk, projectPk);
-  if (auth === 'OWNER') {
-    return next();
-  } else {
+  const result = await selectAuth(user.pk, projectPk);
+  if (result === null || result['auth'] === 'ONLY_READ') {
     res.status(401);
     res.json(msgSerializer('요청에 대한 권한이 없습니다.'));
+  } else if (result['auth'] === 'OWNER') {
+    return next();
   }
 };
 
