@@ -7,7 +7,7 @@ module.exports = {
     (SELECT pk FROM USERS WHERE pk = ?),
     (SELECT pk FROM TASK_LISTS WHERE pk = ?),
     ?,
-    ?,,
+    ?
   );
   UPDATE TASK_LISTS SET task_count = task_count + 1 WHERE pk = ?;`,
 };
