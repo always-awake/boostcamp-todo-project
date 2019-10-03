@@ -71,7 +71,7 @@ CREATE TABLE IF NOT EXISTS `todo`.`TASKS` (
 CREATE TABLE IF NOT EXISTS `todo`.`USERS_has_PROJECTS` (
   user_pk BIGINT(21) NOT NULL,
   project_pk BIGINT(21) NOT NULL,
-  auth ENUM('ONLY_READ', 'EDITABLE') NOT NULL,
+  auth ENUM('ONLY_READ', 'OWNER') NOT NULL,
   PRIMARY KEY (user_pk, project_pk)
 );
 

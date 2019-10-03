@@ -28,6 +28,18 @@ VALUES(
     (SELECT pk FROM USERS WHERE pk = 3)
 );
 
+INSERT INTO PROJECTS(user_pk, is_public)
+VALUES(
+    (SELECT pk FROM USERS WHERE pk = 1),
+    0
+);
+INSERT INTO USERS_has_PROJECTS(user_pk, project_pk, auth)
+VALUE(
+    (SELECT pk FROM USERS WHERE pk = 1),
+    (SELECT pk FROM PROJECTS WHERE pk = 4),
+    'OWNER'
+);
+
 -- -----------------------------------------------------
 -- Init `todo`.`TASK_LISTS`
 -- -----------------------------------------------------
