@@ -1,8 +1,22 @@
-import createError from 'http-errors';
-import express from 'express';
-import path from 'path';
-import cookieParser from 'cookie-parser';
-import logger from 'morgan';
+const createError = require('http-errors');
+const express = require('express');
+const path = require('path');
+const cookieParser = require('cookie-parser');
+const logger = require('morgan');
+const session = require('express-session');
+const RedisStore = require('connect-redis')(session);
+const redis = require('redis');
+const passport = require('passport');
+const flash = require('connect-flash');
+const passportConfig = require('./lib/passport');
+const dotEnv = require('dotenv');
+dotEnv.config();
+
+// router import
+const adminRouter = require('./routes/adminRouter');
+const userRouter = require('./routes/userRouter');
+const projectRouter = require('./routes/projectRouter');
+const taskRouter = require('./routes/taskRouter');
 
 const app = express();
 
@@ -10,15 +24,46 @@ const app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
+// middleware
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
+app.use(cookieParser(process.env.COOKIE_PARSER_SECRET_CODE));
 app.use(express.static(path.join(__dirname, 'public')));
 
+// session - redis
+const redisClient = redis.createClient(
+    process.env.REDIS_PORT,
+    process.env.REDIS_HOST
+);
+
+app.use(session({
+  secret: process.env.SESSION_SECRET_CODE,
+  resave: false,
+  saveUninitialized: true,
+  expires: new Date(Date.now() + 10000),
+  store: new RedisStore({
+    client: redisClient,
+    ttl: 60 * 60 * 60, // 1시간동안 유효
+  }),
+  cookie: {
+    maxAge: 1000 * 60 * 60 // 1시간동안 유효
+  }
+}));
+
+//flash
+app.use(flash());
+
+// passport
+app.use(passport.initialize());
+app.use(passport.session());
+passportConfig(passport);
+
 // router setting
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
+app.use('/admin', adminRouter);
+app.use('/users', userRouter);
+app.use('/projects', projectRouter);
+app.use('/tasks', taskRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -36,4 +81,4 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-export default app;
+module.exports = app;
