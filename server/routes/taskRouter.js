@@ -5,12 +5,13 @@ const {
   isOwner
 } = require('../middlewares/auth');
 const {
-  createTask
+  createTask,
+  modifyTask
 } = require('../controllers/taskController');
 
 
 taskRouter.post('/', isLogin, isOwner, createTask);
-taskRouter.put('/:taskPk', isLogin, isOwner,)
+taskRouter.put('/:taskPk', isLogin, isOwner, modifyTask);
 
 
 module.exports = taskRouter;
