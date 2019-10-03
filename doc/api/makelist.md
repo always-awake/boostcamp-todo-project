@@ -1,9 +1,10 @@
 ## Todo API Documentation
 
 ### users
+- [x] 아이디 중복체크
 - [ ] 회원가입 
-- [ ] 로그인(ok)
-- [ ] 로그아웃(ok)
+- [x] 로그인
+- [x] 로그아웃
 - [ ] 어드민 권한 수정 기능
 
 ### users/projects
