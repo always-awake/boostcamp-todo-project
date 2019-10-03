@@ -33,7 +33,7 @@ API Documentation
 
  ### modify task
  > task 수정
- - Request `POST /tasks/:taskPk`
+ - Request `PUT /tasks/:taskPk`
    * Body
      + **projectPk**: task list가 속해있는 project의 Pk (유저의 권한을 파악하기 위함)
      + **content**: task 수정할 내용 (String)
@@ -50,3 +50,11 @@ API Documentation
     "msg": "일시적 오류입니다. 다시 시도해주세요."
 }
  ```
+
+ ### remove task
+ > task 삭제
+ - Request `DELETE /tasks/:taskPk`
+   * Body
+     + **projectPk**: task list가 속해있는 project의 Pk (유저의 권한을 파악하기 위함)
+ 
+ - Response `HTTP 204 No Content`
