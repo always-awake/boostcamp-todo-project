@@ -38,6 +38,7 @@ VALUES(
     '할 일',
     1
 );
+UPDATE PROJECTS SET task_list_count = task_list_count + 1 WHERE pk = 1;
 
 INSERT INTO TASK_LISTS(user_pk, project_pk, title, seq)
 VALUES(
@@ -46,6 +47,7 @@ VALUES(
     '하는 중',
     2
 );
+UPDATE PROJECTS SET task_list_count = task_list_count + 1 WHERE pk = 1;
 
 INSERT INTO TASK_LISTS(user_pk, project_pk, title, seq)
 VALUES(
@@ -54,6 +56,7 @@ VALUES(
     '다 함',
     3
 );
+UPDATE PROJECTS SET task_list_count = task_list_count + 1 WHERE pk = 1;
 
 -- -----------------------------------------------------
 -- Init `todo`.`TASKS`
@@ -65,6 +68,7 @@ VALUES(
     '자바스크립트 공부하기',
     1
 );
+UPDATE TASK_LISTS SET task_count = task_count + 1 WHERE pk = 1;
 
 INSERT INTO TASKS(user_pk, task_list_pk, content, seq)
 VALUES(
@@ -73,4 +77,4 @@ VALUES(
     '파이썬 공부하기',
     2
 );
-
+UPDATE TASK_LISTS SET task_count = task_count + 1 WHERE pk = 1;
