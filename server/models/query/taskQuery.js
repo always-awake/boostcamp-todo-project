@@ -10,5 +10,6 @@ module.exports = {
     ?
   );
   UPDATE TASK_LISTS SET task_count = task_count + 1 WHERE pk = ?;`,
-  UPDATE_TASK: `UPDATE TASKS SET content = ? WHERE pk = ?;`
+  UPDATE_TASK: `UPDATE TASKS SET content = ? WHERE pk = ?;`,
+  DELETE_TASK: `DELETE FROM TASKS WHERE pk = ?;`
 };

@@ -1,6 +1,7 @@
 const {
   insertTask,
-  updateTask
+  updateTask,
+  deleteTask
 } = require('../models/orm/taskOrm');
 const {
   msgSerializer
@@ -54,7 +55,31 @@ const modifyTask = async (req, res) => {
   res.json(msgSerializer(msg));
 };
 
+/**
+ * task 삭제 요청을 처리하는 함수
+ * @param req
+ * @param res
+ */
+const removeTask = async (req, res) => {
+  const { taskPk } = req.params;
+  const deleteResult = await deleteTask(taskPk);
+
+  let status = null;
+  let msg = null;
+  if (deleteResult) {
+    status = 204;
+    msg = 'task가 성공적으로 삭제되었습니다.';
+  } else {
+    status = 500;
+    msg = '일시적 오류입니다. 다시 시도해주세요.';
+  }
+
+  res.status(status);
+  res.json(msgSerializer(msg));
+};
+
 module.exports = {
   createTask,
-  modifyTask
+  modifyTask,
+  removeTask
 };

@@ -3,7 +3,8 @@ const {
   SELECT_TASK_BY_ID,
   GET_TASK_COUNT,
   INSERT_TASK,
-  UPDATE_TASK
+  UPDATE_TASK,
+  DELETE_TASK
 } = require('../query/taskQuery');
 
 /**
@@ -51,8 +52,19 @@ const updateTask = async (taskPk, content) => {
   }
 };
 
+const deleteTask = async (taskPk) => {
+  try {
+    await dbPool.query(DELETE_TASK, [taskPk]);
+    return true
+  } catch(e){
+    console.log('데이터 베이스 오류: ', e);
+    return false
+  }
+};
+
 module.exports = {
   selectTaskByPk,
   insertTask,
   updateTask,
+  deleteTask
 };
