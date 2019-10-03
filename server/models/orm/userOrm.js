@@ -1,7 +1,7 @@
-const { dbPool } = require('../models/pool');
+const { dbPool } = require('../pool');
 const {
   SELECT_USER_BY_ID,
-} = require('./query');
+} = require('../query/userQuery');
 
 const getUserById = async (id) => {
   const rows = await dbPool.query(SELECT_USER_BY_ID, [id]);

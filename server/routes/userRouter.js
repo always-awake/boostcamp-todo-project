@@ -1,11 +1,15 @@
 const express = require('express');
 const userRouter = express.Router();
-const { isAuthenticated } = require('../middlewares/auth.js');
+const { isLogin } = require('../middlewares/auth');
 const {
   userLogin,
+  userLogout,
+  checkIdValidation
 } = require('../controllers/userController.js');
 
-userRouter.post('/login', userLogin);
 
+userRouter.get('/validation', checkIdValidation);
+userRouter.post('/login', userLogin);
+userRouter.post('/logout', isLogin, userLogout);
 
 module.exports = userRouter;
