@@ -19,7 +19,7 @@ const isLogin = (req, res, next) => {
 };
 
 /**
- * 요청하는 유저가 해당 프로젝트에 대해 OWNER 권한(=편집권한)이 있는지 체크하는 함
+ * 요청하는 유저가 해당 프로젝트에 대해 OWNER 권한(=편집권한)이 있는지 체크하는 함수
  * @param req
  * @param res
  * @param next
