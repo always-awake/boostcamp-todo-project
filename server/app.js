@@ -15,6 +15,8 @@ dotEnv.config();
 // router import
 const adminRouter = require('./routes/adminRouter');
 const userRouter = require('./routes/userRouter');
+const projectRouter = require('./routes/projectRouter');
+const taskRouter = require('./routes/taskRouter');
 
 const app = express();
 
@@ -60,6 +62,8 @@ passportConfig(passport);
 // router setting
 app.use('/admin', adminRouter);
 app.use('/users', userRouter);
+app.use('/projects', projectRouter);
+app.use('/tasks', taskRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
