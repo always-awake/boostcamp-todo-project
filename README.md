@@ -46,7 +46,7 @@ membership-todo
 ## 데이터베이스 설계 및 sql 스트립트
 * [데이터 베이스 ERD와 테이블 구조(칼럼, 칼럼의 데이터 타입)](https://github.com/always-awake/membership-todo/tree/ss54/doc/db)
 * [테이블 생성 sql 스크립트](https://github.com/always-awake/membership-todo/blob/ss54/doc/db/db_schema.sql)
-* [초기 더미 데이터 생성 sql 스크립트](https://github.com/always-awake/membership-todo/blob/ss54/doc/db/db_schema.sql)
+* [초기 더미 데이터 생성 sql 스크립트](https://github.com/always-awake/membership-todo/blob/ss54/doc/db/db_init.sql)
 
 ## API Documentation
 * [To do Api Documentaion](https://github.com/always-awake/membership-todo/tree/ss54/doc/api)
