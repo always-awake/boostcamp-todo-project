@@ -19,7 +19,6 @@ const userLogin = (req, res, next) => {
       'local-login', (err, user, info) => {
         const error = err || info;
         if (error) return res.json(401, error);
-        if (!user) return res.json(404, {message: '일시적 오류 발생'});
         req.logIn(user, (err) => {
           if (err) return res.json(500, err);
           res.status(200);
@@ -41,7 +40,11 @@ const userLogout = (req, res) => {
   })
 };
 
-
+/**
+ * 아이디 중복 체크 요청을 처리하는 함수
+ * @param req
+ * @param res
+ */
 const checkIdValidation = async (req, res) => {
   const { id } = req.query;
   const user = await getUserById(id);
@@ -63,9 +66,28 @@ const checkIdValidation = async (req, res) => {
   res.json(idDuplicationMsgSerializer(id, result, msg))
 };
 
+/**
+ * 회원 가입 요청을 처리하는 함수
+ * @param req
+ * @param res
+ */
+const userSignUp = (req, res) => {
+  passport.authenticate(
+      'local-signup', (err, user, info) => {
+        const error = err || info;
+        if (error) return res.json(401, error);
+        req.logIn(user, (err) => {
+          if (err) return res.json(500, err);
+          res.status(201);
+          res.json(userAndMsgSerializer(req.user, '정상적으로 회원가입'));
+        })
+      })(req, res);
+};
+
 module.exports = {
   userLogin,
   userLogout,
-  checkIdValidation
+  checkIdValidation,
+  userSignUp
 };
 
