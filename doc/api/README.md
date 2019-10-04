@@ -59,13 +59,13 @@ API Documentation
  
  - Response `HTTP 204 No Content`
  
-  ### check id duplication (validation)
-  > 아이디 중복 체크
-  - Request `GET /tasks/validation/?id={userId}`
+### check id duplication (validation)
+> 아이디 중복 체크
+- Request `GET /tasks/validation/?id={userId}`
   
-  - Response <br>
+- Response <br>
   
-`HTTP 406 Not Acceptabl`
+`HTTP 406 Not Acceptable`
 ```json
 {
     "checked_id": "user1",
@@ -79,5 +79,47 @@ API Documentation
     "checked_id": "user10",
     "id_duplication": false,
     "msg": "사용 가능한 아이디입니다."
+}
+```
+
+### sign up
+> 유저 회원가입
+- Request `POST /users/accounts`
+   * Body
+     + **uploadImg**: 유저 프로필 파일
+     + **id**: 유저 아이디
+     + **password**: 유저 비밀번호
+     + **name**: 유저 이름
+- Response <br>
+  
+`HTTP 401 Not Unauthorized`
+```js
+// 중복된 아이디를 이용해 회원가입을 요청할 경우
+
+{
+    "message": "사용할 수 없는 아이디입니다."
+}
+```
+
+`HTTP 201 Created`
+```json
+{
+    "auth_user": {
+        "pk": 7,
+        "id": "user21",
+        "name": "유저11",
+        "password": "admin12345",
+        "is_superuser": 0
+    },
+    "msg": "정상적으로 회원가입"
+}
+```
+
+`HTTP 401 Unauthorized`
+```js
+// 데이터 베이스 처리 오류 또는 필수필드 request body에 넣지 않았을 경우
+
+{
+    "message": "일시적 오류입니다. 다시 시도해주세요."
 }
 ```
