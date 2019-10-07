@@ -4,3 +4,7 @@
 # server .gitignore list
 server/node_modules
 server/.env
+
+# web .gitignore list
+web/node_modules
+web/dist
