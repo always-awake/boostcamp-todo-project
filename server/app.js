@@ -8,6 +8,7 @@ const RedisStore = require('connect-redis')(session);
 const redis = require('redis');
 const passport = require('passport');
 const flash = require('connect-flash');
+const cors = require('cors')
 const passportConfig = require('./lib/passport');
 const dotEnv = require('dotenv');
 dotEnv.config();
@@ -25,6 +26,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
 // middleware
+app.use(cors());
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));

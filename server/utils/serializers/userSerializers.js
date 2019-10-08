@@ -13,7 +13,15 @@ const idDuplicationMsgSerializer = (checkedId, result, msg) => {
   }
 };
 
+const isLoginMsgSerializer = (isLogin, msg) => {
+  return {
+    is_login: isLogin,
+    msg: msg
+  }
+};
+
 module.exports = {
   userAndMsgSerializer,
-  idDuplicationMsgSerializer
+  idDuplicationMsgSerializer,
+  isLoginMsgSerializer
 };

@@ -2,11 +2,31 @@ const passport = require('passport');
 const {
   userAndMsgSerializer,
   idDuplicationMsgSerializer,
+  isLoginMsgSerializer
 } = require('../utils/serializers/userSerializers');
 const {
   msgSerializer,
 } = require('../utils/serializers/commonSerializers');
 const { getUserById } = require('../models/orm/userOrm');
+
+/**
+ * 유저 세션 확인 요청을 처리하는 함수
+ * @param req
+ * @param res
+ */
+const checkSession = (req, res) => {
+  if (req.isAuthenticated) {
+    res.status(200);
+    res.json(
+        isLoginMsgSerializer(true, '이미 로그인되어 있습니다.')
+    )
+  } else {
+    res.status(401);
+    res.json(
+        isLoginMsgSerializer(false, '로그인이 안되었습니다.')
+    );
+  }
+};
 
 /**
  * 유저 로그인 요청을 처리하는 함수
@@ -88,6 +108,7 @@ module.exports = {
   userLogin,
   userLogout,
   checkIdValidation,
-  userSignUp
+  userSignUp,
+  checkSession
 };
 
