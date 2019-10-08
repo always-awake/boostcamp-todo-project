@@ -5,7 +5,7 @@ const {
 } = require('../query/userQuery');
 
 const selectUserById = async (id) => {
-  const [rows] = await dbPool.query(SELECT_USER_BY_ID, [id]);
+  const [rows] = await dbPool.execute(SELECT_USER_BY_ID, [id]);
   return (rows.length === 0) ? null : rows[0]
 };
 
