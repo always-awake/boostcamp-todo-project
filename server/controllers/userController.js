@@ -15,16 +15,12 @@ const { getUserById } = require('../models/orm/userOrm');
  * @param res
  */
 const checkSession = (req, res) => {
-  if (req.isAuthenticated) {
+  if (req.isAuthenticated()) {
     res.status(200);
-    res.json(
-        isLoginMsgSerializer(true, '이미 로그인되어 있습니다.')
-    )
+    res.json(isLoginMsgSerializer(true, '이미 로그인되어 있습니다.'));
   } else {
-    res.status(401);
-    res.json(
-        isLoginMsgSerializer(false, '로그인이 안되었습니다.')
-    );
+    res.status(200);
+    res.json(isLoginMsgSerializer(false, '로그인이 안되었습니다.'));
   }
 };
 
