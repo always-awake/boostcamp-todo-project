@@ -1,4 +1,5 @@
-import { LOGIN_URL } from "../../utils/URL";
+import { LOGIN_URL } from '../../utils/URL';
+import { $ } from '../../utils/utils';
 
 class LoginForm {
 
@@ -12,7 +13,7 @@ class LoginForm {
   }
 
   render() {
-    const main = document.querySelector(`main#${this.insertionTagId}`);
+    const main = $(`main#${this.insertionTagId}`);
     main.innerHTML = `
     <div id="loginForm">
       <div id="userId">
@@ -29,16 +30,16 @@ class LoginForm {
   }
 
   addEvent() {
-    const loginForm = document.querySelector('div#loginForm');
-    const loginButton = loginForm.querySelector('div#loginButton');
+    const loginForm = $('div#loginForm');
+    const loginButton = $('div#loginButton', loginForm);
     loginButton.addEventListener('click', () => {
-      const userId = loginForm.querySelector('#userIdInput').value;
-      const userPw = loginForm.querySelector('#userPwInput').value;
-      this.requestLogin(userId, userPw);
+      const userId = $('#userIdInput', loginForm).value;
+      const userPw = $('#userPwInput', loginForm).value;
+      this.postLogin(userId, userPw);
     })
   }
 
-  requestLogin(userId, userPw) {
+  postLogin(userId, userPw) {
     fetch(LOGIN_URL, {
       method: 'POST',
       credentials: 'include',
@@ -49,10 +50,9 @@ class LoginForm {
       headers:{
         'Content-Type' : 'application/json;charset=utf-8'
       }
-    })
-      .then((res) => res.json())
+    }).then((res) => res.json())
       .then((res) => console.log('Success:', res))
-        .catch(err => console.error('Error: ', err));
+      .catch(err => console.error('Error: ', err));
   }
 }
 
