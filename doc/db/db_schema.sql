@@ -22,6 +22,7 @@ CREATE TABLE IF NOT EXISTS `todo`.`USERS` (
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `todo`.`PROJECTS` (
   pk BIGINT(21) NOT NULL AUTO_INCREMENT,
+  name VARCHAR(50) NOT NULL,
   user_pk BIGINT(21) NOT NULL,
   is_public TINYINT NULL DEFAULT '1',
   task_list_count BIGINT(21) NOT NULL DEFAULT 0,

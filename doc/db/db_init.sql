@@ -13,19 +13,22 @@ VALUES('user3', 'admin12345', 'user3', False);
 -- -----------------------------------------------------
 -- Init `todo`.`PROJECTS`
 -- -----------------------------------------------------
-INSERT INTO PROJECTS(user_pk)
+INSERT INTO PROJECTS(user_pk, name)
 VALUES(
-    (SELECT pk FROM USERS WHERE pk = 1)
+    (SELECT pk FROM USERS WHERE pk = 1),
+    '해야함'
 );
 
-INSERT INTO PROJECTS(user_pk)
+INSERT INTO PROJECTS(user_pk, name)
 VALUES(
-    (SELECT pk FROM USERS WHERE pk = 2)
+    (SELECT pk FROM USERS WHERE pk = 2),
+    '하는중'
 );
 
-INSERT INTO PROJECTS(user_pk)
+INSERT INTO PROJECTS(user_pk, name)
 VALUES(
-    (SELECT pk FROM USERS WHERE pk = 3)
+    (SELECT pk FROM USERS WHERE pk = 3),
+    '다함'
 );
 
 INSERT INTO PROJECTS(user_pk, is_public)
