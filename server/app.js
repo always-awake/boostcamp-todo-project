@@ -25,8 +25,21 @@ const app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
+// cors setting
+const whitelist = ['http://192.168.0.105:8000'];
+const corsOptions = {
+  origin: (origin, callback) => {
+    if (whitelist.indexOf(origin) !== -1) {
+      callback(null, true)
+    } else {
+      callback(new Error('Not allowed by CORS'))
+    }
+  },
+  credentials: true
+};
+app.use(cors(corsOptions));
+
 // middleware
-app.use(cors());
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -41,6 +54,7 @@ const redisClient = redis.createClient(
 );
 
 app.use(session({
+  name: 'todo-auth-session',
   secret: process.env.SESSION_SECRET_CODE,
   resave: false,
   saveUninitialized: true,
@@ -50,10 +64,9 @@ app.use(session({
     ttl: 60 * 60 * 60, // 1시간동안 유효
   }),
   cookie: {
-    maxAge: 1000 * 60 * 60 // 1시간동안 유효
+    maxAge: 1000 * 60 * 60, // 1시간동안 유효
   }
 }));
-
 //flash
 app.use(flash());
 
@@ -61,6 +74,7 @@ app.use(flash());
 app.use(passport.initialize());
 app.use(passport.session());
 passportConfig(passport);
+
 
 // router setting
 app.use('/admin', adminRouter);

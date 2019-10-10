@@ -19,7 +19,7 @@ module.exports = (passport) => {
         usernameField: 'id',
         passwordField: 'password',
         session: true,
-        passReqToCallback: true,
+        passReqToCallback: false,
       }, async (id, password, done) => {
         const user = await selectUserById(id);
         if (user === null) {

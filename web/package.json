@@ -6,7 +6,7 @@
     "type": "git",
     "url": "https://github.com/always-awake/membership-todo/web"
   },
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack --config webpack.config.js",
@@ -26,7 +26,5 @@
     "webpack": "^4.41.0",
     "webpack-cli": "^3.3.9"
   },
-  "dependencies": {
-    "lodash": "^4.17.15"
-  }
+  "dependencies": {}
 }
