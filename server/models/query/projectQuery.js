@@ -1,5 +1,13 @@
 module.exports = {
-  SELECT_PROJECT_BY_PK: `SELECT pk, is_public, user_pk, task_lists_order FROM PROJECTS WHERE pk=?;`,
+  SELECT_PROJECT_BY_PK: `  
+  SELECT
+  tl.pk AS taskListPk, tl.title AS taskListTitle, 
+  tl.task_count AS taskCount, t.content AS taskContent, u.name AS userName
+  FROM TASK_LISTS tl
+    LEFT OUTER JOIN TASKS t ON tl.pk = t.task_list_pk
+    LEFT OUTER JOIN USERS u ON u.pk = t.user_pk
+  WHERE tl.project_pk = ?;  
+  `,
   SELECT_PROJECT_LIST_BY_USER_PK: `
   SELECT user_pk, project_pk, project_name, task_list_count
   FROM

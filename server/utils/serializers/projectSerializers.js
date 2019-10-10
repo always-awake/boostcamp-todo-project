@@ -1,8 +1,6 @@
-const projectSerializer = (project) => {
+const projectSerializer = (taskList) => {
   return {
-    pk: project.pk,
-    user_pk: project.user_pk,
-    task_lists_order: project.task_lists_order,
+    task_list: taskList
   }
 };
 

@@ -6,7 +6,7 @@ const {
 
 const getProjectByPk = async (pk) => {
   const [rows] = await dbPool.query(SELECT_PROJECT_BY_PK, [pk]);
-  return (rows.length === 0) ? null : rows[0]
+  return (rows.length === 0) ? null : rows
 };
 
 const getProjectList = async (userPk) => {
