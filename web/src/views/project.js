@@ -1,6 +1,7 @@
-import { Project } from '../components/project/project';
-import { ProjectController } from '../controllers/projectController';
 import { Observer } from '../utils/Observer';
+import { Project } from '../components/project/Project';
+import { ProjectController } from '../controllers/ProjectController';
+
 
 class ProjectView {
 
@@ -14,7 +15,7 @@ class ProjectView {
 
   init() {
     this.observer.addSubscriber({
-      eventName: 'updateProjectView',
+      event: 'updateProjectView',
       handler: this.updateView,
       target: this
     });
