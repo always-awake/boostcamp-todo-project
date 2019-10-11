@@ -1,3 +1,5 @@
+import { taskHtml } from '../templates/project/task';
+
 class Task {
 
   constructor(task) {
@@ -5,8 +7,7 @@ class Task {
   }
 
   render() {
-    return `<div class="task">${this.task.taskContent}</div>
-    `
+    return taskHtml(this.task.taskContent, this.task.userName);
   }
 }
 

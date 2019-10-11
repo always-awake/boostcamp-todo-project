@@ -1,6 +1,7 @@
-const { PROJECT_LIST_URL } = require('../../utils/URL');
-const { ProjectView } = require('../../views/project');
-const { $ } = require('../../utils/utils');
+import { projectListHtml } from '../templates/projectList/projectList';
+import { PROJECT_LIST_URL } from '../../utils/URL';
+import { ProjectView } from '../../views/project';
+import { $ } from '../../utils/utils'
 
 class ProjectList {
 
@@ -17,15 +18,7 @@ class ProjectList {
 
   render() {
     const insertionSection = $(`main#${this.insertionTagId}`);
-    insertionSection.innerHTML = `
-    <div class="projectListTitle">
-    <div id="projectOwner">${this.projectOwner.name}</div>
-    님의 프로젝트 목록
-    </div>
-    <div id="projectList">
-    ${this.projectDivList}
-    </div>
-    `
+    insertionSection.innerHTML = projectListHtml(this.projectOwner.name, this.projectDivList);
   }
 
   setEvent() {
@@ -50,16 +43,16 @@ class ProjectList {
         project_list.forEach((project) => {
           this.projectList[project.project_name] = project.project_pk;
         });
-        this.createProjectDivList();
+        this.createProjectListHtml();
+        this.render();
+        this.setEvent();
       }).catch(err => console.error('Error: ', err));
   }
 
-  createProjectDivList() {
+  createProjectListHtml() {
     this.projectDivList = Object.keys(this.projectList).reduce((acc, projectName) => {
       return acc += `<div class="project">${projectName}</div>\n`
     }, '');
-    this.render();
-    this.setEvent();
   }
 }
 

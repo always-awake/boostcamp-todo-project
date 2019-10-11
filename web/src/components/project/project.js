@@ -1,3 +1,4 @@
+import { projectHtml } from '../templates/project/project'
 import { TaskList } from '../project/taskList';
 import { $ } from '../../utils/utils';
 
@@ -16,12 +17,7 @@ class Project {
 
   render() {
     const insertionSection = $(`main#${this.insertionTagId}`);
-    insertionSection.innerHTML = `
-    <div id="projectTitle">${this.projectName}</div>
-    <div id="project">
-      ${this.taskListDivList}
-    </div>
-    `
+    insertionSection.innerHTML = projectHtml(this.projectName, this.taskListDivList)
   }
 
   createTaskListHTML(projectData) {

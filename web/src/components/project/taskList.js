@@ -1,4 +1,5 @@
-import { Task } from './task'
+import { Task } from './Task'
+import { taskListHtml } from '../templates/project/taskList';
 
 class TaskList {
 
@@ -8,18 +9,14 @@ class TaskList {
   }
 
   init() {
-    this.createTaskHTML();
+    this.createTaskListHTML();
   }
 
   render() {
-    return `
-      <div class="taskList">
-        <div class="taskListName">${this.tasks[0].taskListTitle}</div>
-        ${this.taskDivList}
-      </div>`
+    return taskListHtml(this.tasks[0].taskListTitle, this.taskDivList);
   }
 
-  createTaskHTML() {
+  createTaskListHTML() {
    this.taskDivList = this.tasks.reduce((acc, task) => {
       if (task.taskCount) {
         const taskComponent = new Task(task);
