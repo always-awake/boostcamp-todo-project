@@ -74,7 +74,7 @@ membership-todo
 * [개발될 API 목록](https://github.com/always-awake/membership-todo/blob/ss54/doc/api/makelist.md)
 
 ## 기타
-* [옵저버 패턴 구조도 - 수정중]()
+* [옵저버 패턴 구조도 - 수정중](https://github.com/always-awake/membership-todo/blob/ss54/doc/observer.md)
 
 ## Show your support
 Give a ⭐️ if this project helped you!
