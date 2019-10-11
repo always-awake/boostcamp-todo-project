@@ -1,5 +1,8 @@
+import { loginFormHtml } from '../templates/login/loginForm';
 import { LOGIN_URL } from '../../utils/URL';
 import { $ } from '../../utils/utils';
+import { ProjectListView } from '../../views/projectList';
+
 
 class LoginForm {
 
@@ -14,19 +17,7 @@ class LoginForm {
 
   render() {
     const main = $(`main#${this.insertionTagId}`);
-    main.innerHTML = `
-    <div id="loginForm">
-      <div id="userId">
-        <div>아이디: </div>
-        <input type="text" id="userIdInput">
-      </div>
-      <div id="userPw">
-        <div>비밀번호: </div>
-        <input type="password" id="userPwInput">
-      </div>
-      <div id="loginButton">login</div>
-    </div>
-    `
+    main.innerHTML = loginFormHtml();
   }
 
   addEvent() {
@@ -50,8 +41,10 @@ class LoginForm {
       headers:{
         'Content-Type' : 'application/json;charset=utf-8'
       }
-    }).then((res) => res.json())
-      .then((res) => console.log('Success:', res))
+    }).then(() => {
+        const projectListView = new ProjectListView('main');
+        projectListView.init();
+      })
       .catch(err => console.error('Error: ', err));
   }
 }
