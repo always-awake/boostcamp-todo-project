@@ -1,9 +1,14 @@
 import { LoginForm } from '../components/login/LoginForm';
 
+
 class LoginView {
 
   constructor(insertionTagId) {
     this.insertionTagId = insertionTagId;
+  }
+
+  init() {
+    this.render();
   }
 
   render() {

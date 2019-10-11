@@ -1,6 +1,7 @@
+import { LOGIN_URL } from './utils/URL';
 import { LoginView } from './views/login';
 import { ProjectListView } from './views/projectList';
-import { LOGIN_URL } from './utils/URL';
+
 
 const main = () => {
   fetch(LOGIN_URL, {
@@ -10,10 +11,10 @@ const main = () => {
     .then((res) => {
       if (res.is_login) {
         const projectListView = new ProjectListView('main');
-        projectListView.render();
+        projectListView.init();
       } else {
         const loginView = new LoginView('main');
-        loginView.render();
+        loginView.init();
       }
     }).catch(err => console.error('Error: ', err));
 };
