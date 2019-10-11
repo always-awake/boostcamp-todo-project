@@ -1,4 +1,4 @@
-import { ProjectModel } from '../models/projectModel'
+import { ProjectModel } from '../models/ProjectModel'
 import { PROJECT_URL } from '../utils/URL';
 
 class ProjectController {

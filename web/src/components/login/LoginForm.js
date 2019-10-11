@@ -1,7 +1,7 @@
 import { loginFormHtml } from '../templates/login/loginForm';
 import { LOGIN_URL } from '../../utils/URL';
 import { $ } from '../../utils/utils';
-import { ProjectListView } from '../../views/projectList';
+import { ProjectListView } from '../../views/ProjectListView';
 
 
 class LoginForm {

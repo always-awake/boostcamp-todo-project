@@ -1,6 +1,6 @@
 import { LOGIN_URL } from './utils/URL';
-import { LoginView } from './views/login';
-import { ProjectListView } from './views/projectList';
+import { LoginView } from './views/LoginView';
+import { ProjectListView } from './views/ProjectListView';
 
 
 const main = () => {

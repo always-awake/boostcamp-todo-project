@@ -1,6 +1,6 @@
 import { projectListHtml } from '../templates/projectList/projectList';
 import { PROJECT_LIST_URL } from '../../utils/URL';
-import { ProjectView } from '../../views/project';
+import { ProjectView } from '../../views/ProjectView';
 import { $ } from '../../utils/utils'
 
 class ProjectList {

@@ -1,5 +1,5 @@
 import { projectHtml } from '../templates/project/project'
-import { TaskList } from '../project/taskList';
+import { TaskList } from '../project/TaskList';
 import { $ } from '../../utils/utils';
 
 class Project {
