@@ -1,24 +1,31 @@
 class Observer {
 
   constructor() {
-    this.subscribers = {};
+    this.eventList = {};
   }
 
   addSubscriber(subscriber) {
-    const { eventName, handler, target } = subscriber;
-    this.subscribers[eventName] = {
-      handler: handler,
-      target: target
-    };
+    const { event, handler, target } = subscriber;
+    if (!Object.keys(this.eventList).includes(event))
+      this.eventList[event] = [];
+    this.eventList[event].push({
+        handler: handler,
+        target: target
+    });
   }
 
   deleteSubscriber(subscriber) {
-    const { eventName } = subscriber;
-    delete this.subscribers[eventName];
+    const { event, handler, target } = subscriber;
+    this.eventList = this.eventList[event].forEach((oldSubscriber, index) => {
+      if (oldSubscriber.handler === handler && oldSubscriber.target === target)
+        this.eventList[event].splice(index, 1)
+    });
   }
 
-  notifySubscriber(eventName, responseData) {
-    this.subscribers[eventName].handler(responseData);
+  notifySubscriber(event, data) {
+    this.eventList[event].forEach((oldSubscriber) => {
+      oldSubscriber.handler(data);
+    });
   }
 }
 

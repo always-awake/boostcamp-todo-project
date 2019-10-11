@@ -5,11 +5,12 @@ const {
   projectList
 } = require('../controllers/projectController');
 const {
-  isLogin
+  isLogin,
+  isReadable
 } = require('../middlewares/auth');
 
 projectRouter.get('', isLogin, projectList);
-projectRouter.get('/:projectPk',projectDetail);
+projectRouter.get('/:projectPk', isLogin, isReadable, projectDetail);
 
 
 module.exports = projectRouter;

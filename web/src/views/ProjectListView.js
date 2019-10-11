@@ -1,8 +1,14 @@
-import { ProjectList } from "../components/projectList/projectList";
+import { ProjectList } from '../components/projectList/ProjectList';
+
 
 class ProjectListView {
+
   constructor(insertionTagId) {
     this.insertionTagId = insertionTagId;
+  }
+
+  init() {
+    this.render();
   }
 
   render() {

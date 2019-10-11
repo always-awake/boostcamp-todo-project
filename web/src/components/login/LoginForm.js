@@ -1,4 +1,8 @@
-import { LOGIN_URL } from "../../utils/URL";
+import { loginFormHtml } from '../templates/login/loginForm';
+import { LOGIN_URL } from '../../utils/URL';
+import { $ } from '../../utils/utils';
+import { ProjectListView } from '../../views/ProjectListView';
+
 
 class LoginForm {
 
@@ -12,33 +16,21 @@ class LoginForm {
   }
 
   render() {
-    const main = document.querySelector(`main#${this.insertionTagId}`);
-    main.innerHTML = `
-    <div id="loginForm">
-      <div id="userId">
-        <div>아이디: </div>
-        <input type="text" id="userIdInput">
-      </div>
-      <div id="userPw">
-        <div>비밀번호: </div>
-        <input type="password" id="userPwInput">
-      </div>
-      <div id="loginButton">login</div>
-    </div>
-    `
+    const main = $(`main#${this.insertionTagId}`);
+    main.innerHTML = loginFormHtml();
   }
 
   addEvent() {
-    const loginForm = document.querySelector('div#loginForm');
-    const loginButton = loginForm.querySelector('div#loginButton');
+    const loginForm = $('div#loginForm');
+    const loginButton = $('div#loginButton', loginForm);
     loginButton.addEventListener('click', () => {
-      const userId = loginForm.querySelector('#userIdInput').value;
-      const userPw = loginForm.querySelector('#userPwInput').value;
-      this.requestLogin(userId, userPw);
+      const userId = $('#userIdInput', loginForm).value;
+      const userPw = $('#userPwInput', loginForm).value;
+      this.postLogin(userId, userPw);
     })
   }
 
-  requestLogin(userId, userPw) {
+  postLogin(userId, userPw) {
     fetch(LOGIN_URL, {
       method: 'POST',
       credentials: 'include',
@@ -49,10 +41,11 @@ class LoginForm {
       headers:{
         'Content-Type' : 'application/json;charset=utf-8'
       }
-    })
-      .then((res) => res.json())
-      .then((res) => console.log('Success:', res))
-        .catch(err => console.error('Error: ', err));
+    }).then(() => {
+        const projectListView = new ProjectListView('main');
+        projectListView.init();
+      })
+      .catch(err => console.error('Error: ', err));
   }
 }
 

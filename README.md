@@ -37,6 +37,27 @@ membership-todo
         └── partials
 ```
 
+### client(web)
+```
+membership-todo
+└── web
+    └── src
+        └── components
+            └── templates
+                └── ormlogin
+                └── project
+                └── projectList
+                └── templates
+        └── controllers
+        └── models
+        └──sass
+        └── utils
+        └── views
+        └── index.js
+    └── index.html
+    └── webpack.config.js
+```
+
 ## 프로젝트 진행 상황 
 - [Todo Project Kanban Page](https://github.com/always-awake/membership-todo/projects)
 
@@ -52,15 +73,8 @@ membership-todo
 * [To do Api Documentaion](https://github.com/always-awake/membership-todo/tree/ss54/doc/api)
 * [개발될 API 목록](https://github.com/always-awake/membership-todo/blob/ss54/doc/api/makelist.md)
 
-## Install
-```sh
-npm install
-```
-
-## Usage
-```sh
-comming soon...
-```
+## 기타
+* [옵저버 패턴 구조도 - 수정중](https://github.com/always-awake/membership-todo/blob/ss54/doc/observer.md)
 
 ## Show your support
 Give a ⭐️ if this project helped you!

@@ -36,7 +36,28 @@ const isOwner = async (req, res, next) => {
   }
 };
 
+/**
+ * 요청하는 유저가 프로젝트를 볼 수 있는 권한이 있는지 체크하는 함수
+ * @param req
+ * @param res
+ * @param next
+ */
+const isReadable = async (req, res, next) => {
+  const { user } = req;
+  const { projectPk } = req.params;
+  const result = await selectAuth(user.pk, projectPk);
+  if (result === null) {
+    return next();
+  } else {
+    const { auth } = result;
+    if (auth === 'OWNER') return next();
+  }
+  res.status(401);
+  res.json(msgSerializer('요청에 대한 권한이 없습니다.'));
+};
+
 module.exports = {
   isLogin,
-  isOwner
+  isOwner,
+  isReadable
 };
