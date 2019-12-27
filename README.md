@@ -1,22 +1,20 @@
-<h1 align="center">Welcome to Boost Todo App 👋</h1>
+<h1 align="center">gitgub 프로젝트 클론 프로젝트 🐙🐱</h1>
 <p>
   <a href="comming soon.." target="_blank">
     <img alt="Documentation" src="https://img.shields.io/badge/documentation-yes-brightgreen.svg" />
   </a>
 </p>
 
-> Boost Todo app - Full Stack(js)
+> github 프로젝트 클론 프로젝트 - Full Stack(js)
 
-### 🏠 [Homepage]()
-
-## Author
+## 프로젝트 개발자
 👤 **이미림(leemirim)**
 * Github: [@always-awake](https://github.com/always-awake)
 
-## Folder Structures
-### server
+## 폴더 및 주요 소스파일 구조
+### server (MVC 구조로 구현)
 ```
-membership-todo
+3_clone_github_todo
 └── server
     └── bin
     └── controllers
@@ -39,7 +37,7 @@ membership-todo
 
 ### client(web)
 ```
-membership-todo
+3_clone_github_todo
 └── web
     └── src
         └── components
@@ -58,12 +56,6 @@ membership-todo
     └── webpack.config.js
 ```
 
-## 프로젝트 진행 상황 
-- [Todo Project Kanban Page](https://github.com/always-awake/membership-todo/projects)
-
-## 이슈 관리
-- [Todo issues page](https://github.com/always-awake/membership-todo/issues)
-
 ## 데이터베이스 설계 및 sql 스트립트
 * [데이터 베이스 ERD와 테이블 구조(칼럼, 칼럼의 데이터 타입)](https://github.com/always-awake/membership-todo/tree/ss54/doc/db)
 * [테이블 생성 sql 스크립트](https://github.com/always-awake/membership-todo/blob/ss54/doc/db/db_schema.sql)
@@ -76,5 +68,8 @@ membership-todo
 ## 기타
 * [옵저버 패턴 구조도 - 수정중](https://github.com/always-awake/membership-todo/blob/ss54/doc/observer.md)
 
-## Show your support
-Give a ⭐️ if this project helped you!
+## 프로젝트 진행 상황 
+- [gitgub 프로젝트 클론 프로젝트 Kanban Page](https://github.com/always-awake/membership-todo/projects)
+
+## 이슈 관리
+- [gitgub 프로젝트 클론 프로젝트 issue page](https://github.com/always-awake/membership-todo/issues)
